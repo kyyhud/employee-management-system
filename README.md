@@ -227,4 +227,4 @@ The credentials are for demonstration and educational purposes only.
 
 ### Cypress Test Results
 
-![Cypress Test Results](screenshots/cypress-testing-results.png)
+![Cypress Test Results](screenshots/cypress-test-results.png)
