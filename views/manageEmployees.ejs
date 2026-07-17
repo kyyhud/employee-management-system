@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <title>Manage Employees</title>
+  </head>
+  <body>
+
+<header class="main-header">
+  <h1>Employee Management System</h1>
+  <nav class="navigation">
+    <a href="/employees">Employee Directory</a>
+    <a href="/addEmployee">Add Employee</a>
+    <a href="/manageEmployees">Manage Employees</a>
+  </nav>
+  <strong class="employee-count">
+    Number of Employees:
+    <span id="employeeCount"><%= employeesFs.length %></span>
+  </strong>
+</header>
+<hr />
+
+<span class="message"><%= msg %></span>
+
+<div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Position</th>
+          <th>Department</th>
+          <th>Email</th>
+          <th>Contact</th>
+          <th>Location</th>
+          <th>Join Date</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+<% employeesFs.forEach((employee) => { %>
+  <tr>
+    <td><%= employee.employeeId %></td>
+    <td>
+      <input
+        type="text"
+        name="name"
+        value="<%= employee.name %>"
+        data-original-value="<%= employee.name %>"
+        form="updateForm<%= employee.employeeId %>"
+        readonly
+      />
+    </td>
+    <td>
+      <input
+        type="text"
+        name="position"
+        value="<%= employee.position %>"
+        data-original-value="<%= employee.position %>"
+        form="updateForm<%= employee.employeeId %>"
+        readonly
+      />
+    </td>
+    <td>
+      <input
+        type="text"
+        name="department"
+        value="<%= employee.department %>"
+        data-original-value="<%= employee.department %>"
+        form="updateForm<%= employee.employeeId %>"
+        readonly
+      />
+    </td>
+    <td>
+      <input
+        type="email"
+        name="emailId"
+        value="<%= employee.emailId %>"
+        data-original-value="<%= employee.emailId %>"
+        form="updateForm<%= employee.employeeId %>"
+        readonly
+      />
+    </td>
+    <td>
+      <input
+        type="text"
+        name="contact"
+        value="<%= employee.contact %>"
+        data-original-value="<%= employee.contact %>"
+        form="updateForm<%= employee.employeeId %>"
+        readonly
+      />
+    </td>
+    <td>
+      <input
+        type="text"
+        name="location"
+        value="<%= employee.location %>"
+        data-original-value="<%= employee.location %>"
+        form="updateForm<%= employee.employeeId %>"
+        readonly
+      />
+    </td>
+    <td>
+      <input
+        type="date"
+        name="joinDate"
+        value="<%= employee.joinDate %>"
+        data-original-value="<%= employee.joinDate %>"
+        form="updateForm<%= employee.employeeId %>"
+        readonly
+      />
+    </td>
+    <td>
+      <form
+        id="updateForm<%= employee.employeeId %>"
+        action="/updateEmployeeInFile"
+        method="post"
+      >
+        <input
+          type="hidden"
+          name="employeeId"
+          value="<%= employee.employeeId %>"
+        />
+      </form>
+
+      <form
+        id="deleteForm<%= employee.employeeId %>"
+        action="/deleteEmployeeInFile"
+        method="post"
+      >
+        <input
+          type="hidden"
+          name="employeeId"
+          value="<%= employee.employeeId %>"
+        />
+      </form>
+
+      <button
+        type="button"
+        form="updateForm<%= employee.employeeId %>"
+        data-editing="false"
+        onclick="handleUpdateClick(this)"
+      >Edit Employee</button>
+      
+      <button
+        type="submit"
+        class="delete-button"
+        form="deleteForm<%= employee.employeeId %>"
+        data-default-form="deleteForm<%= employee.employeeId %>"
+        onclick="return handleSecondaryButtonClick(this)"
+      >Delete Employee</button>
+      
+    </td>
+  </tr>
+<% }) %>
+      </tbody>
+    </table>
+</div>
+
+    <script>
+      function handleUpdateClick(buttonElement) {
+        const formId = buttonElement.getAttribute("form");
+        const secondaryButton = buttonElement.nextElementSibling;
+        if (buttonElement.getAttribute("data-editing") !== "true") {
+          const editableFields = document.querySelectorAll(
+            'input[form="' + formId + '"][type="text"], input[form="' + formId + '"][type="email"], input[form="' + formId + '"][type="date"]'
+          );
+          editableFields.forEach((field) => {
+            field.removeAttribute("readonly");
+          });
+          buttonElement.textContent = "Save Changes";
+          buttonElement.setAttribute("data-editing", "true");
+          if (secondaryButton) {
+            secondaryButton.textContent = "Cancel Changes";
+            secondaryButton.type = "button";
+            secondaryButton.removeAttribute("form");
+          }
+          return;
+        }
+        const targetForm = document.getElementById(formId);
+        if (targetForm) {
+          targetForm.requestSubmit();
+        }
+      }
+      function handleSecondaryButtonClick(buttonElement) {
+        const updateButton = buttonElement.previousElementSibling;
+        if (updateButton && updateButton.getAttribute("data-editing") === "true") {
+          const updateFormId = updateButton.getAttribute("form");
+          const editableFields = document.querySelectorAll(
+            'input[form="' + updateFormId + '"][type="text"], input[form="' + updateFormId + '"][type="email"], input[form="' + updateFormId + '"][type="date"]'
+          );
+          editableFields.forEach((field) => {
+            field.value = field.getAttribute("data-original-value");
+            field.setAttribute("readonly", "readonly");
+          });
+          updateButton.textContent = "Edit Employee";
+          updateButton.setAttribute("data-editing", "false");
+          buttonElement.textContent = "Delete Employee";
+          buttonElement.type = "submit";
+          buttonElement.setAttribute("form", buttonElement.getAttribute("data-default-form"));
+          return false;
+        }
+        return confirm("Are you sure you want to delete this employee?");
+      }
+
+      function refreshEmployeeCount() {
+        fetch("/employeesCount")
+          .then((response) => response.json())
+          .then((data) => {
+            const countElement = document.getElementById("employeeCount");
+            if (countElement) {
+              countElement.textContent = data.count;
+            }})
+          .catch(() => {});
+      }setInterval(refreshEmployeeCount, 2000);
+    </script>
+    
+    <hr />
+    <h3>Current User: <%= emailId %></h3>
+    <a href="/">Logout</a>
+  </body>
+</html>

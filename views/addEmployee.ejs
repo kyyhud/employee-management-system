@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <title>Add Employee</title>
+  </head>
+  <body>
+<header class="main-header">
+  <h1>Employee Management System</h1>
+  <nav class="navigation">
+    <a href="/employees">Employee Directory</a>
+    <a href="/addEmployee">Add Employee</a>
+    <a href="/manageEmployees">Manage Employees</a>
+  </nav>
+  <strong class="employee-count">
+    Number of Employees:
+    <span id="employeeCount"><%= employeesFs.length %></span>
+  </strong>
+</header>
+<hr />
+
+<span class="message"><%= msg %></span>
+
+<h2>Add Employee</h2>
+
+<form method="POST" action="/addEmployeeInFile">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" required />
+  </div>
+  <div class="form-group">
+    <label for="emailId">Email</label>
+    <input type="email" id="emailId" name="emailId" required />
+  </div>
+  <div class="form-group">
+    <label for="position">Position</label>
+    <input type="text" id="position" name="position" required />
+  </div>
+  <div class="form-group">
+    <label for="department">Department</label>
+    <input type="text" id="department" name="department" required />
+  </div>
+  <div class="form-group">
+    <label for="contact">Contact</label>
+    <input type="text" id="contact" name="contact" required />
+  </div>
+  <div class="form-group">
+    <label for="location">Location</label>
+    <input type="text" id="location" name="location" required />
+  </div>
+  <div class="form-group">
+    <label for="joinDate">Join Date</label>
+    <input type="date" id="joinDate" name="joinDate" required />
+  </div>
+  <div class="form-actions">
+    <button type="submit">Add Employee</button>
+    <button type="reset">Reset</button>
+  </div>
+</form>
+
+<hr />
+<footer class="user-footer">
+  <h3>Current User: <%= emailId %></h3>
+  <a href="/">Logout</a>
+</footer>
+
+    <script>
+      function refreshEmployeeCount() {
+        fetch("/employeesCount")
+          .then((response) => response.json())
+          .then((data) => {
+            const countElement = document.getElementById("employeeCount");
+            if (countElement) {
+              countElement.textContent = data.count;
+            }
+          })
+          .catch(() => {});
+      }
+      setInterval(refreshEmployeeCount, 2000);
+    </script>
+  </body>
+</html>

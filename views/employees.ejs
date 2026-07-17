@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/styles.css" />
+   <title>Employee Directory</title>
+  </head>
+  <body>
+<header class="main-header">
+  <h1>Employee Management System</h1>
+
+  <nav class="navigation">
+    <a href="/employees">Employee Directory</a>
+    <a href="/addEmployee">Add Employee</a>
+    <a href="/manageEmployees">Manage Employees</a>
+  </nav>
+
+  <strong class="employee-count">
+    Number of Employees:
+    <span id="employeeCount"><%= employeesFs.length %></span>
+  </strong>
+</header>
+    <hr />
+<h2>Employee Directory</h2>
+
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Position</th>
+        <th>Department</th>
+        <th>Email</th>
+        <th>Contact</th>
+        <th>Location</th>
+        <th>Join Date</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% employeesFs.forEach((employee) => { %>
+        <tr>
+          <td><%= employee.employeeId %></td>
+          <td><%= employee.name %></td>
+          <td><%= employee.position %></td>
+          <td><%= employee.department %></td>
+          <td><%= employee.emailId %></td>
+          <td><%= employee.contact %></td>
+          <td><%= employee.location %></td>
+          <td><%= employee.joinDate %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+
+<hr />
+<footer class="user-footer">
+  <h3>Current User: <%= emailId %></h3>
+  <a href="/">Logout</a>
+</footer>
+
+    <script>
+      function refreshEmployeeCount() {
+        fetch("/employeesCount")
+          .then((response) => response.json())
+          .then((data) => {
+            const countElement = document.getElementById("employeeCount");
+            if (countElement) {
+              countElement.textContent = data.count;
+            }
+          })
+          .catch(() => {});
+      }
+
+      setInterval(refreshEmployeeCount, 2000);
+    </script>
+  </body>
+</html>

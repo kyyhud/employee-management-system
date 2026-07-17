@@ -1,0 +1,102 @@
+[
+  {
+    "employeeId": 5,
+    "name": "Maya Thompson",
+    "emailId": "maya.thompson@company.com",
+    "position": "Front-End Developer",
+    "department": "Engineering",
+    "contact": "314-555-0101",
+    "location": "St. Louis, MO",
+    "joinDate": "2025-08-12"
+  },
+  {
+    "employeeId": 6,
+    "name": "Marcus Reed",
+    "emailId": "marcus.reed@company.com",
+    "position": "Operations Manager",
+    "department": "Operations",
+    "contact": "618-555-0104",
+    "location": "Belleville, IL",
+    "joinDate": "2023-06-26"
+  },
+  {
+    "employeeId": 7,
+    "name": "Eric Stevens",
+    "emailId": "eric@email.com",
+    "position": "Back-end Developer",
+    "department": "Engineering",
+    "contact": "888-888-8888",
+    "location": "St. Charles, MO",
+    "joinDate": "2021-07-15"
+  },
+  {
+    "employeeId": 8,
+    "name": "Elena Garcia",
+    "emailId": "elena.garcia@company.com",
+    "position": "UX Designer",
+    "department": "Product Design",
+    "contact": "314-555-0105",
+    "location": "Kirkwood, MO",
+    "joinDate": "2025-03-10"
+  },
+  {
+    "employeeId": 9,
+    "name": "Daniel Brooks",
+    "emailId": "daniel.brooks@company.com",
+    "position": "Application Support Analyst",
+    "department": "Information Technology",
+    "contact": "314-555-0102",
+    "location": "St. Louis, MO",
+    "joinDate": "2024-11-04"
+  },
+  {
+    "employeeId": 10,
+    "name": "Bill Jackson",
+    "emailId": "bill@email.com",
+    "position": "Human Resources Coordinator",
+    "department": "Human Resources",
+    "contact": "555-555-5555",
+    "location": "Chesterfield, MO",
+    "joinDate": "2017-04-15"
+  },
+  {
+    "name": "Taylor Morgan",
+    "emailId": "taylor.morgan@example.com",
+    "position": "Application Support Analyst",
+    "department": "Technology",
+    "contact": "555-555-0105",
+    "location": "St. Louis",
+    "joinDate": "2026-07-12",
+    "employeeId": 11
+  },
+  {
+    "name": "Jordan Ellis",
+    "emailId": "jordan.ellis@example.com",
+    "position": "Business Systems Analyst",
+    "department": "Technology",
+    "contact": "555-555-0142",
+    "location": "St. Louis",
+    "joinDate": "2026-03-18",
+    "employeeId": 12
+  },
+  {
+    "name": "Cypress Test Employee",
+    "emailId": "cypress.1784062483866@company.com",
+    "position": "Test Analyst",
+    "department": "Quality Assurance",
+    "contact": "314-555-0199",
+    "location": "St. Louis, MO",
+    "joinDate": "2026-07-14",
+    "employeeId": 13
+  },
+  {
+    "name": "Casey Nguyen",
+    "emailId": "casey@email.com",
+    "position": "Data Engineer",
+    "department": "Technology",
+    "contact": "123-555-0123",
+    "location": "Collinsville, IL",
+    "joinDate": "2026-01-27",
+    "employeeId": 14
+  }
+]
