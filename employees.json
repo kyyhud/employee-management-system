@@ -36,28 +36,8 @@
     "position": "UX Designer",
     "department": "Product Design",
     "contact": "314-555-0105",
-    "location": "Kirkwood, MO",
+    "location": "South County, MO",
     "joinDate": "2025-03-10"
-  },
-  {
-    "employeeId": 9,
-    "name": "Daniel Brooks",
-    "emailId": "daniel.brooks@company.com",
-    "position": "Application Support Analyst",
-    "department": "Information Technology",
-    "contact": "314-555-0102",
-    "location": "St. Louis, MO",
-    "joinDate": "2024-11-04"
-  },
-  {
-    "employeeId": 10,
-    "name": "Bill Jackson",
-    "emailId": "bill@email.com",
-    "position": "Human Resources Coordinator",
-    "department": "Human Resources",
-    "contact": "555-555-5555",
-    "location": "Chesterfield, MO",
-    "joinDate": "2017-04-15"
   },
   {
     "name": "Taylor Morgan",
@@ -98,5 +78,35 @@
     "location": "Collinsville, IL",
     "joinDate": "2026-01-27",
     "employeeId": 14
+  },
+  {
+    "name": "Hillary Stacey",
+    "emailId": "hillary12@example.com",
+    "position": "System Support Specialist",
+    "department": "Technology",
+    "contact": "124-555-5501",
+    "location": "St. Louis",
+    "joinDate": "2024-06-10",
+    "employeeId": 15
+  },
+  {
+    "name": "Cypress Test Employee",
+    "emailId": "cypress.1784308569482@company.com",
+    "position": "Test Analyst",
+    "department": "Quality Assurance",
+    "contact": "314-555-0199",
+    "location": "St. Louis, MO",
+    "joinDate": "2026-07-14",
+    "employeeId": 16
+  },
+  {
+    "name": "Cypress Test Employee",
+    "emailId": "cypress.1784308615574@company.com",
+    "position": "Test Analyst",
+    "department": "Quality Assurance",
+    "contact": "314-555-0199",
+    "location": "St. Louis, MO",
+    "joinDate": "2026-07-14",
+    "employeeId": 17
   }
 ]
